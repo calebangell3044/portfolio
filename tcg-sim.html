@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCG Market Sim | Caleb Angell</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .game-preview {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: var(--space-xl) 0;
+    }
+    
+    .game-preview-header {
+      padding: var(--space-lg);
+      background: linear-gradient(135deg, rgba(74, 144, 164, 0.1), rgba(201, 162, 39, 0.05));
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .game-preview-body {
+      padding: var(--space-lg);
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+    }
+    
+    .feature-item {
+      background: var(--bg-elevated);
+      padding: var(--space-md);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent-azure);
+    }
+    
+    .feature-item h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .feature-item p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    
+    .play-button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-md) var(--space-xl);
+      background: linear-gradient(135deg, var(--accent-azure), #3a7a8a);
+      border: none;
+      color: white;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(74, 144, 164, 0.3);
+    }
+    
+    .play-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(74, 144, 164, 0.4);
+    }
+    
+    .play-button svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .tech-stack {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin-top: var(--space-md);
+    }
+    
+    .tech-badge {
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="stars"></div>
+  
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Caleb <span>Angell</span></a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">Blog</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">Writing ▾</a>
+          <div class="dropdown-content">
+            <a href="novels/coronation.html" class="dropdown-link">Coronation</a>
+            <a href="novels/azure-sunrise.html" class="dropdown-link">The Azure Sunrise</a>
+            <a href="novels/threads-of-the-soul.html" class="dropdown-link">Threads of the Soul</a>
+            <a href="novels/tormented-gems.html" class="dropdown-link">The Tormented Gems</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="universe.html" class="nav-link">The Universe</a>
+        </li>
+        <li class="nav-item">
+          <a href="tcg-sim.html" class="nav-link active">TCG Sim</a>
+        </li>
+        <li class="nav-item">
+          <a href="music.html" class="nav-link">Music</a>
+        </li>
+        <li class="nav-item">
+          <a href="gallery.html" class="nav-link">Gallery</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <main>
+    <header class="page-header container">
+      <p class="section-label animate-in">Interactive Project</p>
+      <h1 class="page-title animate-in delay-1">TCG Market Sim</h1>
+      <p class="page-subtitle animate-in delay-2">
+        A trading card game pack-opening simulator where you can experience the thrill of collecting without the cost.
+      </p>
+    </header>
+    
+    <section class="section container">
+      <div class="content-narrow">
+        
+        <div class="game-preview animate-in delay-1">
+          <div class="game-preview-header">
+            <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-azure); margin-bottom: 0.5rem;">
+              🎮 Play Now
+            </p>
+            <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: var(--space-sm);">
+              Spiritual Possessions TCG
+            </h3>
+            <p style="color: var(--text-secondary); margin-bottom: var(--space-md);">
+              Open packs, collect cards, and build your collection in this browser-based simulator.
+            </p>
+            <a href="https://calebangell3044.github.io/tcg-cards/" target="_blank" rel="noopener noreferrer" class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              Launch Game
+            </a>
+          </div>
+          <div class="game-preview-body">
+            <div class="tech-stack">
+              <span class="tech-badge">Browser-based</span>
+              <span class="tech-badge">No download required</span>
+              <span class="tech-badge">Free to play</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prose">
+          <h2>About the Project</h2>
+          <p>
+            TCG Market Sim started as an exploration of what makes trading card games 
+            compelling—the anticipation of opening a pack, the joy of pulling a rare 
+            card, the satisfaction of completing a collection. This simulator captures 
+            that experience in a browser-based format.
+          </p>
+          
+          <p>
+            The project also serves as a testing ground for card designs from my 
+            various TCG concepts, including <strong>Spiritual Possessions</strong>—a 
+            game connected to the broader themes of my interconnected universe.
+          </p>
+          
+          <h2>Features</h2>
+        </div>
+        
+        <div class="feature-grid">
+          <div class="feature-item">
+            <h4>Pack Opening</h4>
+            <p>Experience the thrill of cracking packs with realistic rarity distributions.</p>
+          </div>
+          <div class="feature-item">
+            <h4>Collection Tracking</h4>
+            <p>Keep track of your pulls and work toward completing your collection.</p>
+          </div>
+          <div class="feature-item">
+            <h4>Custom Cards</h4>
+            <p>Features original card designs and artwork created for this project.</p>
+          </div>
+          <div class="feature-item">
+            <h4>No Cost</h4>
+            <p>All the fun of collecting without spending real money on cardboard.</p>
+          </div>
+        </div>
+        
+        <div class="prose">
+          <h2>The Cards</h2>
+          <p>
+            The cards in TCG Market Sim feature designs from several of my trading 
+            card game concepts. <strong>Spiritual Possessions</strong> draws from 
+            the soul-based themes present in my written work—cards that represent 
+            spirits, bindings, and the tension between worlds.
+          </p>
+          
+          <p>
+            Other card sets may include designs from <strong>NEON ECLIPSE</strong>, 
+            a cyberpunk-aesthetic TCG, and various other concepts I've developed 
+            over the years.
+          </p>
+          
+          <h2>Development</h2>
+          <p>
+            This project is actively maintained and updated with new cards and 
+            features. Check back regularly for new pack releases and gameplay 
+            improvements.
+          </p>
+          
+          <div class="text-center mt-xl">
+            <a href="https://calebangell3044.github.io/tcg-cards/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              Play TCG Market Sim →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Caleb Angell. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+    
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+    
+    document.querySelectorAll('.dropdown > .nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          link.parentElement.classList.toggle('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
