@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<header class="page-header container">
+  <p class="section-label animate-in">{{ page.date | date: "%B %Y" }}</p>
+  <h1 class="page-title animate-in delay-1">{{ page.title }}</h1>
+  {% if page.subtitle %}
+  <p class="page-subtitle animate-in delay-2">{{ page.subtitle }}</p>
+  {% endif %}
+</header>
+
+<section class="section container">
+  <div class="content-narrow">
+    <div class="prose">
+      {{ content }}
+    </div>
+    
+    {% if page.tags %}
+    <div class="post-tags" style="margin-top: var(--space-xl);">
+      {% for tag in page.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    
+    <div style="margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid rgba(255,255,255,0.05);">
+      <a href="{{ '/' | relative_url }}" class="btn">← Back to Blog</a>
+    </div>
+  </div>
+</section>
