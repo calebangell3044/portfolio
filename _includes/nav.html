@@ -1,6 +1,6 @@
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="{{ '/' | relative_url }}" class="nav-logo">Caleb <span>Angell</span></a>
+    <a href="{{ site.baseurl }}/" class="nav-logo">Caleb <span>Angell</span></a>
     
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span>
@@ -10,28 +10,28 @@
     
     <ul class="nav-menu" id="navMenu">
       <li class="nav-item">
-        <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">Blog</a>
+        <a href="{{ site.baseurl }}/" class="nav-link {% if page.url == '/' %}active{% endif %}">Blog</a>
       </li>
       <li class="nav-item dropdown">
-        <a href="#" class="nav-link {% if page.url contains '/novels' %}active{% endif %}">Writing ▾</a>
+        <a href="#" class="nav-link {% if page.url contains '/novels' or page.url contains '/chapters' %}active{% endif %}">Writing ▾</a>
         <div class="dropdown-content">
-          <a href="{{ '/novels/coronation.html' | relative_url }}" class="dropdown-link">Coronation</a>
-          <a href="{{ '/novels/azure-sunrise.html' | relative_url }}" class="dropdown-link">The Azure Sunrise</a>
-          <a href="{{ '/novels/threads-of-the-soul.html' | relative_url }}" class="dropdown-link">Threads of the Soul</a>
-          <a href="{{ '/novels/tormented-gems.html' | relative_url }}" class="dropdown-link">The Tormented Gems</a>
+          <a href="{{ site.baseurl }}/novels/coronation.html" class="dropdown-link">Coronation</a>
+          <a href="{{ site.baseurl }}/novels/azure-sunrise.html" class="dropdown-link">The Azure Sunrise</a>
+          <a href="{{ site.baseurl }}/novels/threads-of-the-soul.html" class="dropdown-link">Threads of the Soul</a>
+          <a href="{{ site.baseurl }}/novels/tormented-gems.html" class="dropdown-link">The Tormented Gems</a>
         </div>
       </li>
       <li class="nav-item">
-        <a href="{{ '/universe.html' | relative_url }}" class="nav-link {% if page.url == '/universe.html' %}active{% endif %}">The Universe</a>
+        <a href="{{ site.baseurl }}/universe.html" class="nav-link {% if page.url == '/universe.html' %}active{% endif %}">The Universe</a>
       </li>
       <li class="nav-item">
-        <a href="{{ '/tcg-sim.html' | relative_url }}" class="nav-link {% if page.url == '/tcg-sim.html' %}active{% endif %}">TCG Sim</a>
+        <a href="{{ site.baseurl }}/tcg-sim.html" class="nav-link {% if page.url == '/tcg-sim.html' %}active{% endif %}">TCG Sim</a>
       </li>
       <li class="nav-item">
-        <a href="{{ '/music.html' | relative_url }}" class="nav-link {% if page.url == '/music.html' %}active{% endif %}">Music</a>
+        <a href="{{ site.baseurl }}/music.html" class="nav-link {% if page.url == '/music.html' %}active{% endif %}">Music</a>
       </li>
       <li class="nav-item">
-        <a href="{{ '/gallery.html' | relative_url }}" class="nav-link {% if page.url == '/gallery.html' %}active{% endif %}">Gallery</a>
+        <a href="{{ site.baseurl }}/gallery.html" class="nav-link {% if page.url == '/gallery.html' %}active{% endif %}">Gallery</a>
       </li>
     </ul>
   </div>

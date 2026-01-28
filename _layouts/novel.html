@@ -1,0 +1,98 @@
+---
+layout: default
+---
+
+{% assign novel_data = site.data.novels[page.novel_key] %}
+{% assign novel_chapters = site.chapters | where: "novel", page.novel_key | sort: "chapter_number" %}
+
+<style>
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--accent-{{ page.accent | default: 'gold' }});
+  }
+  .section-label { color: var(--accent-{{ page.accent | default: 'gold' }}); }
+  .chapter-number { color: var(--accent-{{ page.accent | default: 'gold' }}); }
+</style>
+
+<header class="page-header container" style="position: relative;">
+  <p class="section-label animate-in">{{ novel_data.category }}</p>
+  <h1 class="page-title animate-in delay-1">{{ novel_data.title }}</h1>
+  {% if novel_data.subtitle %}
+  <p class="page-subtitle animate-in delay-2">{{ novel_data.subtitle }}</p>
+  {% endif %}
+</header>
+
+<section class="section container">
+  <div class="content-narrow">
+    <div class="prose">
+      <h2>About the Story</h2>
+      {{ novel_data.description | markdownify }}
+      
+      {% if novel_data.characters %}
+      <h2>Characters</h2>
+      {% for char in novel_data.characters %}
+      <p><strong>{{ char.name }}</strong> — {{ char.description }}</p>
+      {% endfor %}
+      {% endif %}
+      
+      {% if novel_data.about_gems %}
+      <h2>The Gems</h2>
+      {{ novel_data.about_gems | markdownify }}
+      {% endif %}
+      
+      <h2>Status</h2>
+      <p>
+        {{ novel_data.status }}{% if novel_data.word_count and novel_data.word_count != "" %} at {{ novel_data.word_count }} words{% endif %}.
+      </p>
+      
+      {% if novel_chapters.size > 0 %}
+      <h2>Chapters</h2>
+      {% endif %}
+    </div>
+    
+    {% if novel_chapters.size > 0 %}
+    <ul class="chapter-list">
+      {% for chapter in novel_chapters %}
+      <li class="chapter-item">
+        <a href="{{ site.baseurl }}{{ chapter.url }}" class="chapter-link">
+          <span>
+            <span class="chapter-number">{% if chapter.chapter_number == 0 %}Prologue{% else %}{{ chapter.chapter_number | prepend: '00' | slice: -2, 2 }}{% endif %}</span>
+            <span class="chapter-title">{{ chapter.title }}</span>
+          </span>
+          <span class="chapter-status available">Read</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p style="color: var(--text-muted); font-style: italic;">Chapters coming soon...</p>
+    {% endif %}
+    
+    <div class="prose mt-xl">
+      {% if novel_data.themes %}
+      <h2>Themes</h2>
+      <p>{{ novel_data.themes }}</p>
+      {% endif %}
+      
+      {% if novel_data.series_info %}
+      <h2>The Series</h2>
+      <p>{{ novel_data.series_info }}</p>
+      {% endif %}
+      
+      <h2>Connection to the Universe</h2>
+      <p>
+        This story exists within the broader interconnected universe and explores 
+        aspects of the cosmological framework shared by other works.
+      </p>
+      <p>
+        <a href="{{ site.baseurl }}/universe.html">Learn more about the interconnected universe →</a>
+      </p>
+    </div>
+  </div>
+</section>

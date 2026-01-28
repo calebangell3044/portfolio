@@ -1,10 +1,12 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music | Caleb Angell</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>{{ site.data.music.title }} | Caleb Angell</title>
+  <link rel="stylesheet" href="{{ site.baseurl }}/styles.css">
   <style>
     .music-embed {
       background: var(--bg-card);
@@ -13,13 +15,11 @@
       padding: var(--space-lg);
       margin: var(--space-xl) 0;
     }
-    
     .music-embed iframe {
       width: 100%;
       border: none;
       border-radius: 8px;
     }
-    
     .soundcloud-profile {
       display: flex;
       align-items: center;
@@ -28,7 +28,6 @@
       padding-bottom: var(--space-lg);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
-    
     .soundcloud-logo {
       width: 60px;
       height: 60px;
@@ -38,33 +37,22 @@
       align-items: center;
       justify-content: center;
     }
-    
-    .soundcloud-logo svg {
-      width: 36px;
-      height: 36px;
-      fill: white;
-    }
-    
+    .soundcloud-logo svg { width: 36px; height: 36px; fill: white; }
     .soundcloud-info h3 {
       font-family: var(--font-display);
       font-size: 1.3rem;
       margin-bottom: 0.25rem;
     }
-    
     .soundcloud-info p {
       color: var(--text-secondary);
       font-size: 0.9rem;
       margin: 0;
     }
-    
     .soundcloud-info a {
       color: var(--accent-azure);
       text-decoration: none;
     }
-    
-    .soundcloud-info a:hover {
-      text-decoration: underline;
-    }
+    .soundcloud-info a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -73,39 +61,25 @@
   
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">Caleb <span>Angell</span></a>
-      
+      <a href="{{ site.baseurl }}/" class="nav-logo">Caleb <span>Angell</span></a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
-      
       <ul class="nav-menu" id="navMenu">
-        <li class="nav-item">
-          <a href="index.html" class="nav-link">Blog</a>
-        </li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/" class="nav-link">Blog</a></li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link">Writing ▾</a>
           <div class="dropdown-content">
-            <a href="novels/coronation.html" class="dropdown-link">Coronation</a>
-            <a href="novels/azure-sunrise.html" class="dropdown-link">The Azure Sunrise</a>
-            <a href="novels/threads-of-the-soul.html" class="dropdown-link">Threads of the Soul</a>
-            <a href="novels/tormented-gems.html" class="dropdown-link">The Tormented Gems</a>
+            <a href="{{ site.baseurl }}/novels/coronation.html" class="dropdown-link">Coronation</a>
+            <a href="{{ site.baseurl }}/novels/azure-sunrise.html" class="dropdown-link">The Azure Sunrise</a>
+            <a href="{{ site.baseurl }}/novels/threads-of-the-soul.html" class="dropdown-link">Threads of the Soul</a>
+            <a href="{{ site.baseurl }}/novels/tormented-gems.html" class="dropdown-link">The Tormented Gems</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a href="universe.html" class="nav-link">The Universe</a>
-        </li>
-        <li class="nav-item">
-          <a href="tcg-sim.html" class="nav-link">TCG Sim</a>
-        </li>
-        <li class="nav-item">
-          <a href="music.html" class="nav-link active">Music</a>
-        </li>
-        <li class="nav-item">
-          <a href="gallery.html" class="nav-link">Gallery</a>
-        </li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/universe.html" class="nav-link">The Universe</a></li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/tcg-sim.html" class="nav-link">TCG Sim</a></li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/music.html" class="nav-link active">Music</a></li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/gallery.html" class="nav-link">Gallery</a></li>
       </ul>
     </div>
   </nav>
@@ -113,15 +87,12 @@
   <main>
     <header class="page-header container">
       <p class="section-label animate-in">Audio</p>
-      <h1 class="page-title animate-in delay-1">Music</h1>
-      <p class="page-subtitle animate-in delay-2">
-        Original compositions and audio experiments.
-      </p>
+      <h1 class="page-title animate-in delay-1">{{ site.data.music.title }}</h1>
+      <p class="page-subtitle animate-in delay-2">{{ site.data.music.subtitle }}</p>
     </header>
     
     <section class="section container">
       <div class="content-narrow">
-        
         <div class="music-embed animate-in delay-1">
           <div class="soundcloud-profile">
             <div class="soundcloud-logo">
@@ -130,48 +101,21 @@
               </svg>
             </div>
             <div class="soundcloud-info">
-              <h3>allwhetwhetwhet</h3>
-              <p>
-                <a href="https://soundcloud.com/allwhetwhetwhet" target="_blank" rel="noopener noreferrer">
-                  Visit on SoundCloud →
-                </a>
-              </p>
+              <h3>{{ site.data.music.soundcloud_username }}</h3>
+              <p><a href="{{ site.data.music.soundcloud_url }}" target="_blank" rel="noopener noreferrer">Visit on SoundCloud →</a></p>
             </div>
           </div>
-          
-          <!-- SoundCloud Profile Embed -->
-          <iframe 
-            width="100%" 
-            height="450" 
-            scrolling="no" 
-            frameborder="no" 
-            allow="autoplay" 
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/allwhetwhetwhet&color=%234a90a4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+          <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" 
+            src="https://w.soundcloud.com/player/?url={{ site.data.music.soundcloud_url | url_encode }}&color=%234a90a4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
           </iframe>
         </div>
         
         <div class="prose">
           <h2>About the Music</h2>
-          <p>
-            Music has always been part of my creative process. Sometimes a melody 
-            captures a mood I'm trying to evoke in writing; other times, a piece 
-            of music becomes the seed for a new story. This page collects my audio 
-            experiments and compositions.
-          </p>
-          
-          <p>
-            The SoundCloud player above should let you browse and play tracks 
-            directly. Feel free to explore, and if something resonates, let me know.
-          </p>
+          {{ site.data.music.about | markdownify }}
           
           <h2>Connection to Other Work</h2>
-          <p>
-            Some tracks were composed with specific stories or scenes in mind. 
-            Music for the interconnected universe often explores the themes of 
-            transformation and preservation through sound—building and layering, 
-            then stripping away, echoing the fundamental tension at the heart 
-            of the cosmology.
-          </p>
+          {{ site.data.music.connection | markdownify }}
         </div>
       </div>
     </section>
@@ -185,21 +129,10 @@
   
   <script>
     const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
-    
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-    navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
-    
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+    document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('open'));
     document.querySelectorAll('.dropdown > .nav-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          link.parentElement.classList.toggle('open');
-        }
-      });
+      link.addEventListener('click', (e) => { if (window.innerWidth <= 768) { e.preventDefault(); link.parentElement.classList.toggle('open'); }});
     });
   </script>
 </body>

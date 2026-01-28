@@ -1,0 +1,112 @@
+---
+layout: default
+---
+
+{% assign novel_data = site.data.novels[page.novel] %}
+{% assign novel_chapters = site.chapters | where: "novel", page.novel | sort: "chapter_number" %}
+{% assign current_index = nil %}
+{% for ch in novel_chapters %}
+  {% if ch.url == page.url %}
+    {% assign current_index = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+{% if current_index != nil %}
+  {% assign prev_index = current_index | minus: 1 %}
+  {% assign next_index = current_index | plus: 1 %}
+  {% if prev_index >= 0 %}
+    {% assign prev_chapter = novel_chapters[prev_index] %}
+  {% endif %}
+  {% if next_index < novel_chapters.size %}
+    {% assign next_chapter = novel_chapters[next_index] %}
+  {% endif %}
+{% endif %}
+
+<style>
+  .chapter-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: var(--space-xl);
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+  .chapter-nav a {
+    color: var(--accent-azure);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .chapter-nav a:hover {
+    text-decoration: underline;
+  }
+  .chapter-nav .disabled {
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+  .chapter-content {
+    font-size: 1.1rem;
+    line-height: 1.9;
+  }
+  .chapter-content p {
+    margin-bottom: 1.5em;
+    color: var(--text-secondary);
+  }
+  .chapter-content p:first-of-type::first-letter {
+    font-family: var(--font-display);
+    font-size: 3.5em;
+    float: left;
+    line-height: 0.8;
+    padding-right: 0.1em;
+    color: var(--text-primary);
+  }
+  .chapter-content em {
+    font-style: italic;
+  }
+  .chapter-content strong {
+    color: var(--text-primary);
+  }
+  .chapter-content hr {
+    border: none;
+    text-align: center;
+    margin: var(--space-xl) 0;
+  }
+  .chapter-content hr::before {
+    content: '• • •';
+    color: var(--text-muted);
+    letter-spacing: 0.5em;
+  }
+</style>
+
+<header class="page-header container">
+  <p class="section-label animate-in">
+    <a href="{{ site.baseurl }}/novels/{{ page.novel }}.html" style="color: inherit; text-decoration: none;">{{ novel_data.title }}</a>
+  </p>
+  <h1 class="page-title animate-in delay-1">
+    {% if page.chapter_number == 0 %}Prologue{% else %}Chapter {{ page.chapter_number }}{% endif %}: {{ page.title }}
+  </h1>
+</header>
+
+<section class="section container">
+  <div class="content-narrow">
+    <div class="chapter-content">
+      {{ content }}
+    </div>
+    
+    <nav class="chapter-nav">
+      {% if prev_chapter %}
+      <a href="{{ site.baseurl }}{{ prev_chapter.url }}">← {{ prev_chapter.title }}</a>
+      {% else %}
+      <span class="disabled">← Previous</span>
+      {% endif %}
+      
+      <a href="{{ site.baseurl }}/novels/{{ page.novel }}.html">All Chapters</a>
+      
+      {% if next_chapter %}
+      <a href="{{ site.baseurl }}{{ next_chapter.url }}">{{ next_chapter.title }} →</a>
+      {% else %}
+      <span class="disabled">Next →</span>
+      {% endif %}
+    </nav>
+  </div>
+</section>

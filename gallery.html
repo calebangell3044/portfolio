@@ -1,22 +1,22 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery | Caleb Angell</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>{{ site.data.gallery.title }} | Caleb Angell</title>
+  <link rel="stylesheet" href="{{ site.baseurl }}/styles.css">
   <style>
     .gallery-intro {
       text-align: center;
       margin-bottom: var(--space-xl);
     }
-    
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: var(--space-md);
     }
-    
     .gallery-item {
       aspect-ratio: 1;
       background: var(--bg-card);
@@ -27,24 +27,18 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    
     .gallery-item:hover {
       transform: scale(1.02);
       border-color: rgba(255,255,255,0.1);
       box-shadow: 0 10px 40px rgba(0,0,0,0.3);
     }
-    
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.3s ease;
     }
-    
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
-    
+    .gallery-item:hover img { transform: scale(1.05); }
     .gallery-item-overlay {
       position: absolute;
       bottom: 0;
@@ -55,24 +49,17 @@
       transform: translateY(100%);
       transition: transform 0.3s ease;
     }
-    
-    .gallery-item:hover .gallery-item-overlay {
-      transform: translateY(0);
-    }
-    
+    .gallery-item:hover .gallery-item-overlay { transform: translateY(0); }
     .gallery-item-title {
       font-family: var(--font-display);
       font-size: 1.1rem;
       margin-bottom: 0.25rem;
     }
-    
     .gallery-item-desc {
       font-size: 0.8rem;
       color: var(--text-secondary);
       margin: 0;
     }
-    
-    /* Placeholder styling for empty gallery */
     .gallery-placeholder {
       display: flex;
       flex-direction: column;
@@ -83,20 +70,13 @@
       text-align: center;
       padding: var(--space-md);
     }
-    
     .gallery-placeholder svg {
       width: 48px;
       height: 48px;
       margin-bottom: var(--space-sm);
       opacity: 0.3;
     }
-    
-    .gallery-placeholder p {
-      font-size: 0.85rem;
-      margin: 0;
-    }
-    
-    /* Lightbox */
+    .gallery-placeholder p { font-size: 0.85rem; margin: 0; }
     .lightbox {
       display: none;
       position: fixed;
@@ -110,23 +90,17 @@
       justify-content: center;
       padding: var(--space-lg);
     }
-    
-    .lightbox.active {
-      display: flex;
-    }
-    
+    .lightbox.active { display: flex; }
     .lightbox-content {
       max-width: 90%;
       max-height: 90%;
       position: relative;
     }
-    
     .lightbox-content img {
       max-width: 100%;
       max-height: 85vh;
       border-radius: 8px;
     }
-    
     .lightbox-close {
       position: absolute;
       top: var(--space-md);
@@ -145,44 +119,22 @@
       transition: background 0.2s ease;
       z-index: 2001;
     }
-    
-    .lightbox-close:hover {
-      background: rgba(255,255,255,0.2);
-    }
-    
+    .lightbox-close:hover { background: rgba(255,255,255,0.2); }
     .lightbox-caption {
       text-align: center;
       margin-top: var(--space-md);
       color: var(--text-secondary);
     }
-    
-    /* Upload instructions */
-    .upload-instructions {
-      background: var(--bg-card);
-      border: 2px dashed rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: var(--space-xl);
+    .empty-gallery {
       text-align: center;
-      margin-top: var(--space-xl);
+      padding: var(--space-2xl);
+      color: var(--text-muted);
     }
-    
-    .upload-instructions h3 {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      margin-bottom: var(--space-sm);
-    }
-    
-    .upload-instructions p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
+    .empty-gallery svg {
+      width: 64px;
+      height: 64px;
       margin-bottom: var(--space-md);
-    }
-    
-    .upload-instructions code {
-      background: var(--bg-elevated);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.85rem;
+      opacity: 0.3;
     }
   </style>
 </head>
@@ -192,39 +144,25 @@
   
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">Caleb <span>Angell</span></a>
-      
+      <a href="{{ site.baseurl }}/" class="nav-logo">Caleb <span>Angell</span></a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
-      
       <ul class="nav-menu" id="navMenu">
-        <li class="nav-item">
-          <a href="index.html" class="nav-link">Blog</a>
-        </li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/" class="nav-link">Blog</a></li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link">Writing ▾</a>
           <div class="dropdown-content">
-            <a href="novels/coronation.html" class="dropdown-link">Coronation</a>
-            <a href="novels/azure-sunrise.html" class="dropdown-link">The Azure Sunrise</a>
-            <a href="novels/threads-of-the-soul.html" class="dropdown-link">Threads of the Soul</a>
-            <a href="novels/tormented-gems.html" class="dropdown-link">The Tormented Gems</a>
+            <a href="{{ site.baseurl }}/novels/coronation.html" class="dropdown-link">Coronation</a>
+            <a href="{{ site.baseurl }}/novels/azure-sunrise.html" class="dropdown-link">The Azure Sunrise</a>
+            <a href="{{ site.baseurl }}/novels/threads-of-the-soul.html" class="dropdown-link">Threads of the Soul</a>
+            <a href="{{ site.baseurl }}/novels/tormented-gems.html" class="dropdown-link">The Tormented Gems</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a href="universe.html" class="nav-link">The Universe</a>
-        </li>
-        <li class="nav-item">
-          <a href="tcg-sim.html" class="nav-link">TCG Sim</a>
-        </li>
-        <li class="nav-item">
-          <a href="music.html" class="nav-link">Music</a>
-        </li>
-        <li class="nav-item">
-          <a href="gallery.html" class="nav-link active">Gallery</a>
-        </li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/universe.html" class="nav-link">The Universe</a></li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/tcg-sim.html" class="nav-link">TCG Sim</a></li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/music.html" class="nav-link">Music</a></li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/gallery.html" class="nav-link active">Gallery</a></li>
       </ul>
     </div>
   </nav>
@@ -232,104 +170,38 @@
   <main>
     <header class="page-header container">
       <p class="section-label animate-in">Visual Art</p>
-      <h1 class="page-title animate-in delay-1">Gallery</h1>
-      <p class="page-subtitle animate-in delay-2">
-        Physical artwork, sketches, and visual experiments.
-      </p>
+      <h1 class="page-title animate-in delay-1">{{ site.data.gallery.title }}</h1>
+      <p class="page-subtitle animate-in delay-2">{{ site.data.gallery.subtitle }}</p>
     </header>
     
     <section class="section container">
       <div class="gallery-intro">
-        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
-          A collection of physical art pieces. Click any image to view it larger.
-        </p>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">{{ site.data.gallery.description }}</p>
       </div>
       
+      {% if site.data.gallery.images.size > 0 %}
       <div class="gallery-grid">
-        <!-- 
-          To add images, create an 'images' folder in your repository 
-          and add gallery items like this:
-          
-          <div class="gallery-item" onclick="openLightbox('images/your-image.jpg', 'Title', 'Description')">
-            <img src="images/your-image.jpg" alt="Description" loading="lazy">
-            <div class="gallery-item-overlay">
-              <h4 class="gallery-item-title">Artwork Title</h4>
-              <p class="gallery-item-desc">Medium, Year</p>
-            </div>
-          </div>
-        -->
-        
-        <!-- Placeholder items - replace with your actual artwork -->
-        <div class="gallery-item">
-          <div class="gallery-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-            </svg>
-            <p>Artwork coming soon</p>
+        {% for img in site.data.gallery.images %}
+        <div class="gallery-item" onclick="openLightbox('{{ site.baseurl }}/images/gallery/{{ img.filename }}', '{{ img.title }}', '{{ img.description }}')">
+          <img src="{{ site.baseurl }}/images/gallery/{{ img.filename }}" alt="{{ img.title }}" loading="lazy">
+          <div class="gallery-item-overlay">
+            <h4 class="gallery-item-title">{{ img.title }}</h4>
+            {% if img.description %}<p class="gallery-item-desc">{{ img.description }}</p>{% endif %}
           </div>
         </div>
-        
-        <div class="gallery-item">
-          <div class="gallery-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-            </svg>
-            <p>Artwork coming soon</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <div class="gallery-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-            </svg>
-            <p>Artwork coming soon</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <div class="gallery-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-            </svg>
-            <p>Artwork coming soon</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <div class="gallery-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-            </svg>
-            <p>Artwork coming soon</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <div class="gallery-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-            </svg>
-            <p>Artwork coming soon</p>
-          </div>
-        </div>
+        {% endfor %}
       </div>
-      
-      <div class="upload-instructions">
-        <h3>Adding Your Artwork</h3>
-        <p>
-          To add images to this gallery, create an <code>images</code> folder in your 
-          repository and update the HTML with your image paths.
-        </p>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">
-          Replace the placeholder gallery items with actual <code>&lt;img&gt;</code> tags 
-          pointing to your artwork files.
-        </p>
+      {% else %}
+      <div class="empty-gallery">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+        </svg>
+        <p>No artwork uploaded yet.<br>Add images via the admin panel.</p>
       </div>
+      {% endif %}
     </section>
   </main>
   
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
     <div class="lightbox-content" onclick="event.stopPropagation()">
@@ -349,24 +221,12 @@
   
   <script>
     const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
-    
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-    navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
-    
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+    document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('open'));
     document.querySelectorAll('.dropdown > .nav-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          link.parentElement.classList.toggle('open');
-        }
-      });
+      link.addEventListener('click', (e) => { if (window.innerWidth <= 768) { e.preventDefault(); link.parentElement.classList.toggle('open'); }});
     });
     
-    // Lightbox functions
     function openLightbox(src, title, desc) {
       document.getElementById('lightbox-img').src = src;
       document.getElementById('lightbox-title').textContent = title || '';
@@ -374,16 +234,11 @@
       document.getElementById('lightbox').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
-    
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('active');
       document.body.style.overflow = '';
     }
-    
-    // Close lightbox on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
   </script>
 </body>
 </html>

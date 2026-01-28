@@ -1,0 +1,9 @@
+title: "Gallery"
+subtitle: "Physical artwork, sketches, and visual experiments."
+
+description: "A collection of physical art pieces. Click any image to view it larger."
+
+# Images array - add images here via admin
+# Each image should have: filename, title, description (optional)
+# Images are stored in /images/gallery/
+images: []

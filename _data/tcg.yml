@@ -1,0 +1,37 @@
+title: "TCG Market Sim"
+subtitle: "A trading card game pack-opening simulator where you can experience the thrill of collecting without the cost."
+game_url: "https://calebangell3044.github.io/tcg-cards/"
+
+about: |
+  TCG Market Sim started as an exploration of what makes trading card games 
+  compelling—the anticipation of opening a pack, the joy of pulling a rare 
+  card, the satisfaction of completing a collection. This simulator captures 
+  that experience in a browser-based format.
+
+  The project also serves as a testing ground for card designs from my 
+  various TCG concepts, including Spiritual Possessions—a game connected 
+  to the broader themes of my interconnected universe.
+
+features:
+  - title: "Pack Opening"
+    description: "Experience the thrill of cracking packs with realistic rarity distributions."
+  - title: "Collection Tracking"
+    description: "Keep track of your pulls and work toward completing your collection."
+  - title: "Custom Cards"
+    description: "Features original card designs and artwork created for this project."
+  - title: "No Cost"
+    description: "All the fun of collecting without spending real money on cardboard."
+
+cards_info: |
+  The cards in TCG Market Sim feature designs from several of my trading 
+  card game concepts. Spiritual Possessions draws from the soul-based themes 
+  present in my written work—cards that represent spirits, bindings, and the 
+  tension between worlds.
+
+  Other card sets may include designs from NEON ECLIPSE, a cyberpunk-aesthetic 
+  TCG, and various other concepts I've developed over the years.
+
+development: |
+  This project is actively maintained and updated with new cards and 
+  features. Check back regularly for new pack releases and gameplay 
+  improvements.

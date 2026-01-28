@@ -1,10 +1,12 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Interconnected Universe | Caleb Angell</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>{{ site.data.universe.title }} | Caleb Angell</title>
+  <link rel="stylesheet" href="{{ site.baseurl }}/styles.css">
   <style>
     .universe-diagram {
       background: var(--bg-card);
@@ -14,7 +16,6 @@
       margin: var(--space-xl) 0;
       text-align: center;
     }
-    
     .cosmology-visual {
       display: flex;
       justify-content: center;
@@ -23,7 +24,6 @@
       flex-wrap: wrap;
       margin: var(--space-lg) 0;
     }
-    
     .ideal-node {
       width: 160px;
       height: 160px;
@@ -35,43 +35,34 @@
       position: relative;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
-    .ideal-node:hover {
-      transform: scale(1.05);
-    }
-    
+    .ideal-node:hover { transform: scale(1.05); }
     .ideal-node.transformation {
       background: radial-gradient(circle at 30% 30%, rgba(122, 90, 245, 0.3), rgba(122, 90, 245, 0.1));
       border: 2px solid var(--accent-purple);
       box-shadow: 0 0 40px rgba(122, 90, 245, 0.2);
     }
-    
     .ideal-node.preservation {
       background: radial-gradient(circle at 30% 30%, rgba(201, 162, 39, 0.3), rgba(201, 162, 39, 0.1));
       border: 2px solid var(--accent-gold);
       box-shadow: 0 0 40px rgba(201, 162, 39, 0.2);
     }
-    
     .ideal-node h3 {
       font-family: var(--font-display);
       font-size: 1.1rem;
       font-weight: 600;
       margin-bottom: 0.25rem;
     }
-    
     .ideal-node p {
       font-size: 0.75rem;
       color: var(--text-secondary);
       max-width: 120px;
     }
-    
     .connection-line {
       width: 80px;
       height: 2px;
       background: linear-gradient(90deg, var(--accent-purple), var(--accent-gold));
       position: relative;
     }
-    
     .connection-line::before {
       content: '⟷';
       position: absolute;
@@ -83,14 +74,12 @@
       color: var(--text-muted);
       font-size: 1.2rem;
     }
-    
     .work-connection {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: var(--space-md);
       margin: var(--space-lg) 0;
     }
-    
     .work-link {
       background: var(--bg-elevated);
       border: 1px solid rgba(255,255,255,0.05);
@@ -100,24 +89,20 @@
       color: inherit;
       transition: all 0.3s ease;
     }
-    
     .work-link:hover {
       border-color: rgba(255,255,255,0.1);
       transform: translateY(-2px);
     }
-    
     .work-link h4 {
       font-family: var(--font-display);
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
     }
-    
     .work-link p {
       font-size: 0.85rem;
       color: var(--text-secondary);
       margin: 0;
     }
-    
     .work-link .connection-type {
       font-size: 0.7rem;
       text-transform: uppercase;
@@ -133,39 +118,25 @@
   
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">Caleb <span>Angell</span></a>
-      
+      <a href="{{ site.baseurl }}/" class="nav-logo">Caleb <span>Angell</span></a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
-      
       <ul class="nav-menu" id="navMenu">
-        <li class="nav-item">
-          <a href="index.html" class="nav-link">Blog</a>
-        </li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/" class="nav-link">Blog</a></li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link">Writing ▾</a>
           <div class="dropdown-content">
-            <a href="novels/coronation.html" class="dropdown-link">Coronation</a>
-            <a href="novels/azure-sunrise.html" class="dropdown-link">The Azure Sunrise</a>
-            <a href="novels/threads-of-the-soul.html" class="dropdown-link">Threads of the Soul</a>
-            <a href="novels/tormented-gems.html" class="dropdown-link">The Tormented Gems</a>
+            <a href="{{ site.baseurl }}/novels/coronation.html" class="dropdown-link">Coronation</a>
+            <a href="{{ site.baseurl }}/novels/azure-sunrise.html" class="dropdown-link">The Azure Sunrise</a>
+            <a href="{{ site.baseurl }}/novels/threads-of-the-soul.html" class="dropdown-link">Threads of the Soul</a>
+            <a href="{{ site.baseurl }}/novels/tormented-gems.html" class="dropdown-link">The Tormented Gems</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a href="universe.html" class="nav-link active">The Universe</a>
-        </li>
-        <li class="nav-item">
-          <a href="tcg-sim.html" class="nav-link">TCG Sim</a>
-        </li>
-        <li class="nav-item">
-          <a href="music.html" class="nav-link">Music</a>
-        </li>
-        <li class="nav-item">
-          <a href="gallery.html" class="nav-link">Gallery</a>
-        </li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/universe.html" class="nav-link active">The Universe</a></li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/tcg-sim.html" class="nav-link">TCG Sim</a></li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/music.html" class="nav-link">Music</a></li>
+        <li class="nav-item"><a href="{{ site.baseurl }}/gallery.html" class="nav-link">Gallery</a></li>
       </ul>
     </div>
   </nav>
@@ -173,29 +144,15 @@
   <main>
     <header class="page-header container">
       <p class="section-label animate-in">Worldbuilding</p>
-      <h1 class="page-title animate-in delay-1">The Interconnected Universe</h1>
-      <p class="page-subtitle animate-in delay-2">
-        A cosmological framework connecting multiple stories through shared magic systems, 
-        gods, and the fundamental tension between Transformation and Preservation.
-      </p>
+      <h1 class="page-title animate-in delay-1">{{ site.data.universe.title }}</h1>
+      <p class="page-subtitle animate-in delay-2">{{ site.data.universe.subtitle }}</p>
     </header>
     
     <section class="section container">
       <div class="content-narrow">
         <div class="prose">
-          <h2>The Vision</h2>
-          <p>
-            Like Brandon Sanderson's Cosmere, this interconnected universe is designed 
-            to be a tapestry of stories that can be enjoyed independently but reward 
-            readers who explore multiple works. Each novel and novella shares fundamental 
-            cosmological rules while telling its own distinct story.
-          </p>
-          
-          <p>
-            The connecting tissue isn't just Easter eggs or cameos—it's a shared 
-            understanding of how magic, souls, and the divine interact across all 
-            worlds and stories.
-          </p>
+          <h2>{{ site.data.universe.sections.vision.title }}</h2>
+          {{ site.data.universe.sections.vision.content | markdownify }}
         </div>
         
         <div class="universe-diagram">
@@ -217,101 +174,33 @@
         </div>
         
         <div class="prose">
-          <h2>The Binding Ideals</h2>
-          <p>
-            At the foundation of all magic lies the conflict between two philosophical 
-            forces: <strong>Transformation</strong> and <strong>Preservation</strong>. 
-            These aren't merely abstract concepts—they are fundamental aspects of 
-            reality itself, and those who align themselves with one Ideal or the other 
-            gain access to power that reflects their chosen philosophy.
-          </p>
+          <h2>{{ site.data.universe.sections.binding_ideals.title }}</h2>
+          {{ site.data.universe.sections.binding_ideals.content | markdownify }}
           
-          <p>
-            <strong>Transformation</strong> holds that change is the path to perfection. 
-            Nothing should remain static; growth, evolution, and metamorphosis are 
-            sacred. Those bound to Transformation can reshape reality—but they themselves 
-            are changed by every act of power.
-          </p>
-          
-          <p>
-            <strong>Preservation</strong> holds that what exists has value precisely 
-            because it exists. To protect, maintain, and defend is sacred. Those bound 
-            to Preservation can shield, restore, and anchor—but they must accept that 
-            their power resists the natural flow of change.
-          </p>
-          
-          <h2>The Pantheon</h2>
-          <p>
-            The gods of this universe are not creators but embodiments—manifestations 
-            of different aspects of the Binding Ideals. Each god represents a particular 
-            expression of Transformation or Preservation, and their interactions with 
-            mortals shape the magic systems of individual worlds.
-          </p>
-          
-          <p>
-            The <strong>Azure God</strong>, featured in <em>The Azure Sunrise</em>, 
-            represents one such divine expression—a being whose influence spreads like 
-            dawn, transforming everything it touches. Other gods embody different 
-            facets: preservation through memory, transformation through destruction, 
-            preservation through stasis.
-          </p>
+          <h2>{{ site.data.universe.sections.pantheon.title }}</h2>
+          {{ site.data.universe.sections.pantheon.content | markdownify }}
           
           <h2>How the Stories Connect</h2>
         </div>
         
         <div class="work-connection">
-          <a href="novels/threads-of-the-soul.html" class="work-link">
-            <p class="connection-type">Core Framework</p>
-            <h4>Threads of the Soul</h4>
-            <p>Establishes the magic system and the war between Ideals in full detail.</p>
+          {% for conn in site.data.universe.story_connections %}
+          <a href="{{ site.baseurl }}/novels/{{ conn.novel }}.html" class="work-link">
+            <p class="connection-type">{{ conn.connection_type }}</p>
+            <h4>{{ site.data.novels[conn.novel].title }}</h4>
+            <p>{{ conn.description }}</p>
           </a>
-          
-          <a href="novels/azure-sunrise.html" class="work-link">
-            <p class="connection-type">Divine Exploration</p>
-            <h4>The Azure Sunrise</h4>
-            <p>Explores one god's relationship with mortals and the nature of transformation.</p>
-          </a>
-          
-          <a href="novels/tormented-gems.html" class="work-link">
-            <p class="connection-type">Soul Mechanics</p>
-            <h4>The Tormented Gems</h4>
-            <p>Examines what happens to souls after death and the boundaries of preservation.</p>
-          </a>
-          
-          <a href="novels/coronation.html" class="work-link">
-            <p class="connection-type">Distant Echo</p>
-            <h4>Coronation</h4>
-            <p>A more distant connection, exploring themes of energy and power in a different context.</p>
-          </a>
+          {% endfor %}
         </div>
         
         <div class="prose">
-          <h2>Reading Order</h2>
-          <p>
-            Each story is designed to stand alone. However, for those who want to 
-            experience the universe in a particular order:
-          </p>
-          <p>
-            <strong>For the core experience:</strong> Start with <em>Threads of the Soul</em>, 
-            which establishes the fundamental rules. Then explore <em>The Azure Sunrise</em> 
-            for a more intimate look at divine power, and <em>The Tormented Gems</em> 
-            for the darker implications of the soul mechanics.
-          </p>
-          <p>
-            <strong>For a lighter entry:</strong> <em>Coronation</em> can be read 
-            completely independently and offers a taste of the thematic concerns 
-            without requiring knowledge of the broader cosmology.
-          </p>
+          <h2>{{ site.data.universe.sections.reading_order.title }}</h2>
+          {{ site.data.universe.sections.reading_order.content | markdownify }}
           
-          <h2>Ongoing Development</h2>
+          <h2>{{ site.data.universe.sections.development.title }}</h2>
+          {{ site.data.universe.sections.development.content | markdownify }}
           <p>
-            This universe is actively expanding. New connections between existing 
-            works are being discovered, and future stories will continue to build 
-            on the established framework while exploring new corners of the cosmology.
-          </p>
-          <p>
-            Follow the <a href="index.html">blog</a> for updates on worldbuilding 
-            developments and new revelations about how the pieces fit together.
+            Follow the <a href="{{ site.baseurl }}/">blog</a> for updates on worldbuilding developments.
           </p>
         </div>
       </div>
@@ -326,21 +215,10 @@
   
   <script>
     const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
-    
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-    navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
-    
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+    document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('open'));
     document.querySelectorAll('.dropdown > .nav-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          link.parentElement.classList.toggle('open');
-        }
-      });
+      link.addEventListener('click', (e) => { if (window.innerWidth <= 768) { e.preventDefault(); link.parentElement.classList.toggle('open'); }});
     });
   </script>
 </body>

@@ -6,7 +6,13 @@ baseurl: "/portfolio"
 markdown: kramdown
 permalink: /blog/:slug/
 
-# Exclude admin and other files from build
+# Collections
+collections:
+  chapters:
+    output: true
+    permalink: /:collection/:path/
+
+# Exclude from build
 exclude:
   - README.md
   - Gemfile

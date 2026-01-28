@@ -13,7 +13,6 @@
       justify-content: center;
       padding: var(--space-lg);
     }
-    
     .admin-box {
       background: var(--bg-card);
       border: 1px solid rgba(255,255,255,0.05);
@@ -22,14 +21,12 @@
       width: 100%;
       max-width: 400px;
     }
-    
     .admin-box h1 {
       font-family: var(--font-display);
       font-size: 1.8rem;
       margin-bottom: var(--space-md);
       text-align: center;
     }
-    
     .admin-box p {
       color: var(--text-secondary);
       font-size: 0.9rem;
@@ -37,17 +34,129 @@
       text-align: center;
     }
     
+    /* Full Admin Layout */
+    .admin-layout {
+      display: none;
+      min-height: 100vh;
+      padding-top: 60px;
+    }
+    .admin-layout.active { display: block; }
+    
+    .admin-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--bg-card);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--space-lg);
+      z-index: 100;
+    }
+    .admin-header h1 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+    }
+    .admin-header-actions {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+    
+    .admin-body {
+      display: flex;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: var(--space-lg);
+      gap: var(--space-lg);
+    }
+    
+    /* Sidebar */
+    .admin-sidebar {
+      width: 220px;
+      flex-shrink: 0;
+    }
+    .admin-nav {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: var(--space-sm);
+      position: sticky;
+      top: 80px;
+    }
+    .admin-nav-item {
+      display: block;
+      padding: var(--space-sm) var(--space-md);
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+    }
+    .admin-nav-item:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--text-primary);
+    }
+    .admin-nav-item.active {
+      background: rgba(74, 144, 164, 0.2);
+      color: var(--accent-azure);
+    }
+    .admin-nav-section {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      padding: var(--space-md) var(--space-md) var(--space-xs);
+      margin-top: var(--space-sm);
+    }
+    
+    /* Main Content */
+    .admin-main {
+      flex: 1;
+      min-width: 0;
+    }
+    .admin-panel {
+      display: none;
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: var(--space-lg);
+    }
+    .admin-panel.active { display: block; }
+    .admin-panel h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: var(--space-md);
+    }
+    .admin-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      margin: var(--space-lg) 0 var(--space-md);
+      padding-top: var(--space-lg);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .admin-panel h3:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    
+    /* Form Elements */
     .form-group {
       margin-bottom: var(--space-md);
     }
-    
     .form-group label {
       display: block;
       font-size: 0.85rem;
       color: var(--text-secondary);
       margin-bottom: var(--space-xs);
     }
-    
     .form-group input,
     .form-group textarea,
     .form-group select {
@@ -61,207 +170,172 @@
       font-size: 1rem;
       transition: border-color 0.2s ease;
     }
-    
     .form-group input:focus,
-    .form-group textarea:focus {
+    .form-group textarea:focus,
+    .form-group select:focus {
       outline: none;
       border-color: var(--accent-azure);
     }
-    
     .form-group textarea {
-      min-height: 300px;
+      min-height: 150px;
       resize: vertical;
-      font-family: 'Monaco', 'Menlo', monospace;
-      font-size: 0.9rem;
       line-height: 1.6;
     }
-    
-    .btn-full {
-      width: 100%;
-      justify-content: center;
+    .form-group textarea.code {
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 0.9rem;
     }
-    
-    .error-msg {
-      color: var(--accent-rose);
-      font-size: 0.85rem;
-      margin-top: var(--space-sm);
-      text-align: center;
-    }
-    
-    .success-msg {
-      color: #4ade80;
-      font-size: 0.85rem;
-      margin-top: var(--space-sm);
-      text-align: center;
-    }
-    
-    /* Editor Layout */
-    .editor-container {
-      max-width: 900px;
-      width: 100%;
-    }
-    
-    .editor-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: var(--space-lg);
-      flex-wrap: wrap;
+    .form-group textarea.large { min-height: 300px; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: var(--space-md);
     }
     
-    .editor-header h1 {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      margin: 0;
-    }
-    
-    .editor-actions {
-      display: flex;
-      gap: var(--space-sm);
-    }
-    
-    .tag-input-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 8px 12px;
-      background: var(--bg-elevated);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 6px;
-      min-height: 44px;
-      align-items: center;
-    }
-    
-    .tag-input-container input {
-      flex: 1;
-      min-width: 100px;
-      padding: 4px;
-      background: transparent;
-      border: none;
-      color: var(--text-primary);
-      font-size: 0.9rem;
-    }
-    
-    .tag-input-container input:focus {
-      outline: none;
-    }
-    
-    .tag-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(74, 144, 164, 0.2);
-      color: var(--accent-azure);
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-    }
-    
-    .tag-pill button {
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      padding: 0;
-      font-size: 1rem;
-      line-height: 1;
-      opacity: 0.7;
-    }
-    
-    .tag-pill button:hover {
-      opacity: 1;
-    }
-    
-    /* Preview Panel */
-    .preview-panel {
-      background: var(--bg-card);
+    /* Item Lists */
+    .item-list {
       border: 1px solid rgba(255,255,255,0.05);
       border-radius: 8px;
-      padding: var(--space-lg);
-      margin-top: var(--space-lg);
-    }
-    
-    .preview-panel h3 {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      margin-bottom: var(--space-md);
-      color: var(--text-secondary);
-    }
-    
-    .preview-content {
-      color: var(--text-secondary);
-      line-height: 1.8;
-    }
-    
-    .preview-content h1, .preview-content h2, .preview-content h3 {
-      font-family: var(--font-display);
-      color: var(--text-primary);
-      margin: var(--space-md) 0 var(--space-sm);
-    }
-    
-    .preview-content p {
+      overflow: hidden;
       margin-bottom: var(--space-md);
     }
-    
-    .preview-content strong {
-      color: var(--text-primary);
+    .item-list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-md);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.2s ease;
+    }
+    .item-list-item:last-child { border-bottom: none; }
+    .item-list-item:hover { background: rgba(255,255,255,0.02); }
+    .item-list-info h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    .item-list-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .item-list-actions {
+      display: flex;
+      gap: var(--space-xs);
+    }
+    .item-list-empty {
+      padding: var(--space-xl);
+      text-align: center;
+      color: var(--text-muted);
     }
     
-    .preview-content em {
-      font-style: italic;
+    /* Buttons */
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 0.8rem;
     }
+    .btn-icon {
+      padding: 8px;
+      line-height: 1;
+    }
+    .btn-danger {
+      border-color: var(--accent-rose);
+      color: var(--accent-rose);
+    }
+    .btn-danger:hover {
+      background: var(--accent-rose);
+      color: white;
+    }
+    .btn-text {
+      background: none;
+      border: none;
+      color: var(--accent-azure);
+      cursor: pointer;
+      padding: 0;
+      font-size: 0.85rem;
+    }
+    .btn-text:hover { text-decoration: underline; }
     
-    .preview-content a {
+    /* Messages */
+    .msg {
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 6px;
+      margin-bottom: var(--space-md);
+      font-size: 0.9rem;
+    }
+    .msg-success {
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      color: #4ade80;
+    }
+    .msg-error {
+      background: rgba(196, 91, 132, 0.1);
+      border: 1px solid rgba(196, 91, 132, 0.3);
+      color: var(--accent-rose);
+    }
+    .msg-info {
+      background: rgba(74, 144, 164, 0.1);
+      border: 1px solid rgba(74, 144, 164, 0.3);
       color: var(--accent-azure);
     }
     
-    .hidden {
-      display: none !important;
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-lg);
     }
-    
-    /* Settings toggle */
-    .settings-toggle {
-      background: none;
-      border: 1px solid rgba(255,255,255,0.1);
-      color: var(--text-secondary);
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.2s ease;
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--bg-card);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 700px;
+      max-height: 90vh;
+      overflow-y: auto;
     }
-    
-    .settings-toggle:hover {
-      border-color: rgba(255,255,255,0.2);
-      color: var(--text-primary);
-    }
-    
-    .settings-panel {
-      background: var(--bg-elevated);
-      border-radius: 8px;
-      padding: var(--space-md);
-      margin-bottom: var(--space-lg);
-    }
-    
-    .settings-panel h4 {
-      font-size: 0.9rem;
-      margin-bottom: var(--space-sm);
-      color: var(--text-secondary);
-    }
-    
-    .repo-info {
+    .modal-header {
+      padding: var(--space-lg);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--text-primary); }
+    .modal-body { padding: var(--space-lg); }
+    .modal-footer {
+      padding: var(--space-lg);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: flex-end;
       gap: var(--space-sm);
-      flex-wrap: wrap;
     }
     
-    .repo-info input {
-      flex: 1;
-      min-width: 150px;
-    }
-    
-    /* Loading spinner */
+    /* Spinner */
     .spinner {
       display: inline-block;
       width: 16px;
@@ -271,9 +345,29 @@
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
     }
+    @keyframes spin { to { transform: rotate(360deg); } }
     
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    /* Loading State */
+    .loading-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10,10,15,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    
+    .hidden { display: none !important; }
+    
+    @media (max-width: 768px) {
+      .admin-body { flex-direction: column; }
+      .admin-sidebar { width: 100%; }
+      .admin-nav { position: static; }
+      .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -290,8 +384,8 @@
         <div class="form-group">
           <input type="password" id="passwordInput" placeholder="Password" autocomplete="off">
         </div>
-        <button type="submit" class="btn btn-primary btn-full">Enter</button>
-        <p class="error-msg hidden" id="passwordError">Incorrect password</p>
+        <button type="submit" class="btn btn-primary" style="width:100%">Enter</button>
+        <p class="msg msg-error hidden" id="passwordError" style="margin-top: var(--space-md); margin-bottom: 0;">Incorrect password</p>
       </form>
     </div>
   </div>
@@ -300,7 +394,7 @@
   <div class="admin-container hidden" id="patSetup">
     <div class="admin-box">
       <h1>GitHub Setup</h1>
-      <p>Enter your GitHub Personal Access Token to enable publishing. <a href="https://github.com/settings/tokens/new?scopes=repo&description=Creative%20Hub%20Admin" target="_blank" style="color: var(--accent-azure);">Generate one here</a> with 'repo' scope.</p>
+      <p>Enter your GitHub Personal Access Token. <a href="https://github.com/settings/tokens/new?scopes=repo&description=Creative%20Hub%20Admin" target="_blank" style="color: var(--accent-azure);">Generate one here</a> with 'repo' scope.</p>
       <form id="patForm">
         <div class="form-group">
           <label>Personal Access Token</label>
@@ -308,326 +402,839 @@
         </div>
         <div class="form-group">
           <label>Repository (username/repo-name)</label>
-          <input type="text" id="repoInput" placeholder="calebangell3044/creative-hub">
+          <input type="text" id="repoInput" placeholder="username/portfolio" value="">
         </div>
-        <button type="submit" class="btn btn-primary btn-full">Save & Continue</button>
-        <p class="error-msg hidden" id="patError"></p>
+        <button type="submit" class="btn btn-primary" style="width:100%">Save & Continue</button>
+        <p class="msg msg-error hidden" id="patError" style="margin-top: var(--space-md); margin-bottom: 0;"></p>
       </form>
     </div>
   </div>
   
-  <!-- Main Editor -->
-  <div class="admin-container hidden" id="editorView">
-    <div class="editor-container">
-      <div class="editor-header">
-        <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">← Back to Site</a>
+  <!-- Main Admin Interface -->
+  <div class="admin-layout" id="adminLayout">
+    <header class="admin-header">
+      <h1>✦ Content Manager</h1>
+      <div class="admin-header-actions">
+        <a href="index.html" class="btn btn-sm">← Back to Site</a>
+        <button class="btn btn-sm btn-danger" onclick="clearCredentials()">Logout</button>
       </div>
+    </header>
+    
+    <div class="admin-body">
+      <aside class="admin-sidebar">
+        <nav class="admin-nav">
+          <button class="admin-nav-item active" data-panel="posts">Blog Posts</button>
+          
+          <div class="admin-nav-section">Novels</div>
+          <button class="admin-nav-item" data-panel="coronation">Coronation</button>
+          <button class="admin-nav-item" data-panel="azure-sunrise">The Azure Sunrise</button>
+          <button class="admin-nav-item" data-panel="threads-of-the-soul">Threads of the Soul</button>
+          <button class="admin-nav-item" data-panel="tormented-gems">The Tormented Gems</button>
+          
+          <div class="admin-nav-section">Pages</div>
+          <button class="admin-nav-item" data-panel="site">Home Page</button>
+          <button class="admin-nav-item" data-panel="universe">Universe</button>
+          <button class="admin-nav-item" data-panel="tcg">TCG Sim</button>
+          <button class="admin-nav-item" data-panel="music">Music</button>
+          <button class="admin-nav-item" data-panel="gallery">Gallery</button>
+        </nav>
+      </aside>
       
-      <div class="editor-header">
-        <h1>New Post</h1>
-        <div class="editor-actions">
-          <button class="settings-toggle" onclick="toggleSettings()">⚙️ Settings</button>
-          <button class="btn" onclick="previewPost()">Preview</button>
-          <button class="btn btn-primary" onclick="publishPost()" id="publishBtn">Publish</button>
+      <main class="admin-main">
+        <div id="globalMsg"></div>
+        
+        <!-- Blog Posts Panel -->
+        <div class="admin-panel active" id="panel-posts">
+          <h2>Blog Posts</h2>
+          <button class="btn btn-primary" onclick="openPostModal()">+ New Post</button>
+          <div id="postsList" style="margin-top: var(--space-lg);"></div>
+        </div>
+        
+        <!-- Novel Panels (generated dynamically) -->
+        <div class="admin-panel" id="panel-coronation">
+          <h2>Coronation</h2>
+          <div id="novel-coronation-content"></div>
+        </div>
+        
+        <div class="admin-panel" id="panel-azure-sunrise">
+          <h2>The Azure Sunrise</h2>
+          <div id="novel-azure-sunrise-content"></div>
+        </div>
+        
+        <div class="admin-panel" id="panel-threads-of-the-soul">
+          <h2>Threads of the Soul</h2>
+          <div id="novel-threads-of-the-soul-content"></div>
+        </div>
+        
+        <div class="admin-panel" id="panel-tormented-gems">
+          <h2>The Tormented Gems</h2>
+          <div id="novel-tormented-gems-content"></div>
+        </div>
+        
+        <!-- Site/Home Panel -->
+        <div class="admin-panel" id="panel-site">
+          <h2>Home Page</h2>
+          <div id="site-content"></div>
+        </div>
+        
+        <!-- Universe Panel -->
+        <div class="admin-panel" id="panel-universe">
+          <h2>Universe Page</h2>
+          <div id="universe-content"></div>
+        </div>
+        
+        <!-- TCG Panel -->
+        <div class="admin-panel" id="panel-tcg">
+          <h2>TCG Sim Page</h2>
+          <div id="tcg-content"></div>
+        </div>
+        
+        <!-- Music Panel -->
+        <div class="admin-panel" id="panel-music">
+          <h2>Music Page</h2>
+          <div id="music-content"></div>
+        </div>
+        
+        <!-- Gallery Panel -->
+        <div class="admin-panel" id="panel-gallery">
+          <h2>Gallery</h2>
+          <div id="gallery-content"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+  
+  <!-- Post Modal -->
+  <div class="modal-overlay" id="postModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="postModalTitle">New Post</h3>
+        <button class="modal-close" onclick="closeModal('postModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" id="postTitle" placeholder="Post title">
+        </div>
+        <div class="form-group">
+          <label>Tags (comma separated)</label>
+          <input type="text" id="postTags" placeholder="Update, Announcement">
+        </div>
+        <div class="form-group">
+          <label>Content (Markdown)</label>
+          <textarea id="postContent" class="code large" placeholder="Write your post in Markdown..."></textarea>
         </div>
       </div>
-      
-      <div class="settings-panel hidden" id="settingsPanel">
-        <h4>GitHub Settings</h4>
-        <div class="repo-info">
-          <input type="text" id="repoDisplay" placeholder="username/repo">
-          <button class="btn" onclick="updateRepo()">Update</button>
-          <button class="btn" onclick="clearCredentials()" style="border-color: var(--accent-rose); color: var(--accent-rose);">Clear All</button>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label>Title</label>
-        <input type="text" id="postTitle" placeholder="My Awesome Post">
-      </div>
-      
-      <div class="form-group">
-        <label>Tags (press Enter to add)</label>
-        <div class="tag-input-container" id="tagContainer">
-          <input type="text" id="tagInput" placeholder="Add tags...">
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label>Content (Markdown supported)</label>
-        <textarea id="postContent" placeholder="Write your post here...
-
-You can use **bold**, *italic*, and [links](https://example.com).
-
-## Headings work too
-
-Just write naturally and it will be formatted nicely on your site."></textarea>
-      </div>
-      
-      <p class="success-msg hidden" id="successMsg"></p>
-      <p class="error-msg hidden" id="editorError"></p>
-      
-      <div class="preview-panel hidden" id="previewPanel">
-        <h3>Preview</h3>
-        <div class="preview-content" id="previewContent"></div>
+      <div class="modal-footer">
+        <button class="btn" onclick="closeModal('postModal')">Cancel</button>
+        <button class="btn btn-primary" id="postSaveBtn" onclick="savePost()">Publish</button>
       </div>
     </div>
   </div>
   
-  <script>
-    // Config
-    const CORRECT_PASSWORD_HASH = '8f9b7c6d5e4a3b2c1d0e9f8a7b6c5d4e'; // We'll check against the actual password
-    const STORAGE_KEYS = {
-      authenticated: 'admin_auth',
-      pat: 'github_pat',
-      repo: 'github_repo'
-    };
-    
-    let tags = [];
-    
-    // Password check (simple client-side - real security is the PAT)
-    function checkPassword(input) {
-      return input === '@Boy$dr3am#';
-    }
-    
-    // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-      // Check if already authenticated this session
-      if (sessionStorage.getItem(STORAGE_KEYS.authenticated)) {
-        showPatOrEditor();
-      }
-      
-      // Password form
-      document.getElementById('passwordForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const password = document.getElementById('passwordInput').value;
-        if (checkPassword(password)) {
-          sessionStorage.setItem(STORAGE_KEYS.authenticated, 'true');
-          showPatOrEditor();
-        } else {
-          document.getElementById('passwordError').classList.remove('hidden');
-          document.getElementById('passwordInput').value = '';
-        }
-      });
-      
-      // PAT form
-      document.getElementById('patForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const pat = document.getElementById('patInput').value.trim();
-        const repo = document.getElementById('repoInput').value.trim();
-        
-        if (!pat || !repo) {
-          showError('patError', 'Please fill in all fields');
-          return;
-        }
-        
-        localStorage.setItem(STORAGE_KEYS.pat, pat);
-        localStorage.setItem(STORAGE_KEYS.repo, repo);
-        showEditor();
-      });
-      
-      // Tag input
-      document.getElementById('tagInput').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          addTag(e.target.value.trim());
-          e.target.value = '';
-        }
-      });
-    });
-    
-    function showPatOrEditor() {
-      document.getElementById('passwordGate').classList.add('hidden');
-      
-      const pat = localStorage.getItem(STORAGE_KEYS.pat);
-      const repo = localStorage.getItem(STORAGE_KEYS.repo);
-      
-      if (pat && repo) {
-        showEditor();
-      } else {
-        document.getElementById('patSetup').classList.remove('hidden');
-      }
-    }
-    
-    function showEditor() {
-      document.getElementById('passwordGate').classList.add('hidden');
-      document.getElementById('patSetup').classList.add('hidden');
-      document.getElementById('editorView').classList.remove('hidden');
-      document.getElementById('repoDisplay').value = localStorage.getItem(STORAGE_KEYS.repo) || '';
-    }
-    
-    function showError(elementId, message) {
-      const el = document.getElementById(elementId);
-      el.textContent = message;
-      el.classList.remove('hidden');
-    }
-    
-    function hideError(elementId) {
-      document.getElementById(elementId).classList.add('hidden');
-    }
-    
-    function toggleSettings() {
-      document.getElementById('settingsPanel').classList.toggle('hidden');
-    }
-    
-    function updateRepo() {
-      const repo = document.getElementById('repoDisplay').value.trim();
-      if (repo) {
-        localStorage.setItem(STORAGE_KEYS.repo, repo);
-        alert('Repository updated!');
-      }
-    }
-    
-    function clearCredentials() {
-      if (confirm('This will clear your saved GitHub credentials. Continue?')) {
-        localStorage.removeItem(STORAGE_KEYS.pat);
-        localStorage.removeItem(STORAGE_KEYS.repo);
-        sessionStorage.removeItem(STORAGE_KEYS.authenticated);
-        location.reload();
-      }
-    }
-    
-    // Tags
-    function addTag(tag) {
-      if (tag && !tags.includes(tag)) {
-        tags.push(tag);
-        renderTags();
-      }
-    }
-    
-    function removeTag(tag) {
-      tags = tags.filter(t => t !== tag);
-      renderTags();
-    }
-    
-    function renderTags() {
-      const container = document.getElementById('tagContainer');
-      const input = document.getElementById('tagInput');
-      
-      // Remove existing pills
-      container.querySelectorAll('.tag-pill').forEach(el => el.remove());
-      
-      // Add new pills before input
-      tags.forEach(tag => {
-        const pill = document.createElement('span');
-        pill.className = 'tag-pill';
-        pill.innerHTML = `${tag} <button onclick="removeTag('${tag}')">&times;</button>`;
-        container.insertBefore(pill, input);
-      });
-    }
-    
-    // Simple Markdown to HTML
-    function markdownToHtml(md) {
-      return md
-        // Headers
-        .replace(/^### (.*$)/gm, '<h3>$1</h3>')
-        .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-        .replace(/^# (.*$)/gm, '<h1>$1</h1>')
-        // Bold and italic
-        .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        // Links
-        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>')
-        // Paragraphs
-        .replace(/\n\n/g, '</p><p>')
-        .replace(/^(.+)$/gm, '<p>$1</p>')
-        .replace(/<p><h/g, '<h')
-        .replace(/<\/h(\d)><\/p>/g, '</h$1>')
-        .replace(/<p><\/p>/g, '');
-    }
-    
-    function previewPost() {
-      const content = document.getElementById('postContent').value;
-      const preview = document.getElementById('previewPanel');
-      const previewContent = document.getElementById('previewContent');
-      
-      previewContent.innerHTML = markdownToHtml(content);
-      preview.classList.toggle('hidden');
-    }
-    
-    // Publish to GitHub
-    async function publishPost() {
-      const title = document.getElementById('postTitle').value.trim();
-      const content = document.getElementById('postContent').value.trim();
-      const btn = document.getElementById('publishBtn');
-      
-      if (!title || !content) {
-        showError('editorError', 'Please fill in title and content');
-        return;
-      }
-      
-      hideError('editorError');
-      document.getElementById('successMsg').classList.add('hidden');
-      
-      // Show loading state
-      btn.disabled = true;
-      btn.innerHTML = '<span class="spinner"></span> Publishing...';
-      
+  <!-- Chapter Modal -->
+  <div class="modal-overlay" id="chapterModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="chapterModalTitle">New Chapter</h3>
+        <button class="modal-close" onclick="closeModal('chapterModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="chapterNovel">
+        <input type="hidden" id="chapterEditPath">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Chapter Number (0 for Prologue)</label>
+            <input type="number" id="chapterNumber" min="0" value="1">
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="chapterTitle" placeholder="Chapter title">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Content (Markdown)</label>
+          <textarea id="chapterContent" class="code large" placeholder="Write your chapter content..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="closeModal('chapterModal')">Cancel</button>
+        <button class="btn btn-primary" id="chapterSaveBtn" onclick="saveChapter()">Save Chapter</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Generic Editor Modal -->
+  <div class="modal-overlay" id="editorModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="editorModalTitle">Edit</h3>
+        <button class="modal-close" onclick="closeModal('editorModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editorFilePath">
+        <input type="hidden" id="editorFileType">
+        <div id="editorFields"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="closeModal('editorModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveEditorContent()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+// ============ CONFIG ============
+const STORAGE_KEYS = {
+  authenticated: 'admin_auth',
+  pat: 'github_pat',
+  repo: 'github_repo'
+};
+
+const NOVELS = ['coronation', 'azure-sunrise', 'threads-of-the-soul', 'tormented-gems'];
+
+// ============ GITHUB API ============
+async function githubAPI(method, path, content = null) {
+  const pat = localStorage.getItem(STORAGE_KEYS.pat);
+  const repo = localStorage.getItem(STORAGE_KEYS.repo);
+  
+  const headers = {
+    'Authorization': `token ${pat}`,
+    'Content-Type': 'application/json',
+  };
+  
+  const url = `https://api.github.com/repos/${repo}/contents/${path}`;
+  
+  const options = { method, headers };
+  
+  if (content !== null) {
+    // For PUT, we need to get the sha first if file exists
+    let sha = null;
+    if (method === 'PUT') {
       try {
-        const pat = localStorage.getItem(STORAGE_KEYS.pat);
-        const repo = localStorage.getItem(STORAGE_KEYS.repo);
-        
-        if (!pat || !repo) {
-          throw new Error('GitHub credentials not found');
+        const existing = await fetch(url, { headers });
+        if (existing.ok) {
+          const data = await existing.json();
+          sha = data.sha;
         }
-        
-        // Generate filename
-        const date = new Date();
-        const dateStr = date.toISOString().split('T')[0];
-        const slug = title.toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-')
-          .replace(/(^-|-$)/g, '');
-        const filename = `_posts/${dateStr}-${slug}.md`;
-        
-        // Generate front matter
-        const frontMatter = [
-          '---',
-          'layout: post',
-          `title: "${title.replace(/"/g, '\\"')}"`,
-          `date: ${date.toISOString()}`,
-          tags.length ? `tags: [${tags.join(', ')}]` : null,
-          '---',
-          '',
-          content
-        ].filter(Boolean).join('\n');
-        
-        // Create file via GitHub API
-        const response = await fetch(`https://api.github.com/repos/${repo}/contents/${filename}`, {
-          method: 'PUT',
-          headers: {
-            'Authorization': `token ${pat}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            message: `Add post: ${title}`,
-            content: btoa(unescape(encodeURIComponent(frontMatter)))
-          })
-        });
-        
-        if (!response.ok) {
-          const data = await response.json();
-          throw new Error(data.message || 'Failed to publish');
-        }
-        
-        // Success!
-        document.getElementById('successMsg').textContent = `✓ Published! Your post will appear on the site in a minute or two.`;
-        document.getElementById('successMsg').classList.remove('hidden');
-        
-        // Clear form
-        document.getElementById('postTitle').value = '';
-        document.getElementById('postContent').value = '';
-        tags = [];
-        renderTags();
-        document.getElementById('previewPanel').classList.add('hidden');
-        
-      } catch (error) {
-        showError('editorError', error.message);
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Publish';
+      } catch (e) {}
+    }
+    
+    options.body = JSON.stringify({
+      message: `Update ${path}`,
+      content: btoa(unescape(encodeURIComponent(content))),
+      ...(sha && { sha })
+    });
+  }
+  
+  if (method === 'DELETE') {
+    // Need sha for delete
+    const existing = await fetch(url, { headers });
+    if (existing.ok) {
+      const data = await existing.json();
+      options.body = JSON.stringify({
+        message: `Delete ${path}`,
+        sha: data.sha
+      });
+    }
+  }
+  
+  const response = await fetch(url, options);
+  return response;
+}
+
+async function getFile(path) {
+  const pat = localStorage.getItem(STORAGE_KEYS.pat);
+  const repo = localStorage.getItem(STORAGE_KEYS.repo);
+  
+  const response = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+    headers: { 'Authorization': `token ${pat}` }
+  });
+  
+  if (!response.ok) return null;
+  
+  const data = await response.json();
+  return decodeURIComponent(escape(atob(data.content)));
+}
+
+async function getDirectory(path) {
+  const pat = localStorage.getItem(STORAGE_KEYS.pat);
+  const repo = localStorage.getItem(STORAGE_KEYS.repo);
+  
+  const response = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+    headers: { 'Authorization': `token ${pat}` }
+  });
+  
+  if (!response.ok) return [];
+  return response.json();
+}
+
+// ============ YAML HELPERS ============
+function parseYAML(text) {
+  // Simple YAML parser for our use case
+  const result = {};
+  const lines = text.split('\n');
+  let currentKey = null;
+  let currentIndent = 0;
+  let multilineValue = '';
+  let inMultiline = false;
+  
+  for (const line of lines) {
+    if (inMultiline) {
+      if (line.startsWith('  ') || line.trim() === '') {
+        multilineValue += line.slice(2) + '\n';
+        continue;
+      } else {
+        result[currentKey] = multilineValue.trim();
+        inMultiline = false;
       }
     }
-  </script>
+    
+    const match = line.match(/^(\w[\w-]*?):\s*(.*)$/);
+    if (match) {
+      const [, key, value] = match;
+      if (value === '|') {
+        currentKey = key;
+        multilineValue = '';
+        inMultiline = true;
+      } else if (value.startsWith('"') && value.endsWith('"')) {
+        result[key] = value.slice(1, -1);
+      } else {
+        result[key] = value;
+      }
+    }
+  }
+  
+  if (inMultiline) {
+    result[currentKey] = multilineValue.trim();
+  }
+  
+  return result;
+}
+
+function toYAML(obj, indent = 0) {
+  let yaml = '';
+  const spaces = '  '.repeat(indent);
+  
+  for (const [key, value] of Object.entries(obj)) {
+    if (value === null || value === undefined) continue;
+    
+    if (typeof value === 'object' && !Array.isArray(value)) {
+      yaml += `${spaces}${key}:\n${toYAML(value, indent + 1)}`;
+    } else if (Array.isArray(value)) {
+      yaml += `${spaces}${key}:\n`;
+      value.forEach(item => {
+        if (typeof item === 'object') {
+          yaml += `${spaces}  -\n`;
+          for (const [k, v] of Object.entries(item)) {
+            yaml += `${spaces}    ${k}: ${v}\n`;
+          }
+        } else {
+          yaml += `${spaces}  - ${item}\n`;
+        }
+      });
+    } else if (typeof value === 'string' && value.includes('\n')) {
+      yaml += `${spaces}${key}: |\n`;
+      value.split('\n').forEach(line => {
+        yaml += `${spaces}  ${line}\n`;
+      });
+    } else {
+      yaml += `${spaces}${key}: ${value}\n`;
+    }
+  }
+  
+  return yaml;
+}
+
+// ============ AUTH ============
+function checkPassword(input) {
+  return input === '@Boy$dr3am#';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (sessionStorage.getItem(STORAGE_KEYS.authenticated)) {
+    showPatOrEditor();
+  }
+  
+  document.getElementById('passwordForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const password = document.getElementById('passwordInput').value;
+    if (checkPassword(password)) {
+      sessionStorage.setItem(STORAGE_KEYS.authenticated, 'true');
+      showPatOrEditor();
+    } else {
+      document.getElementById('passwordError').classList.remove('hidden');
+      document.getElementById('passwordInput').value = '';
+    }
+  });
+  
+  document.getElementById('patForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const pat = document.getElementById('patInput').value.trim();
+    const repo = document.getElementById('repoInput').value.trim();
+    
+    if (!pat || !repo) {
+      const err = document.getElementById('patError');
+      err.textContent = 'Please fill in all fields';
+      err.classList.remove('hidden');
+      return;
+    }
+    
+    localStorage.setItem(STORAGE_KEYS.pat, pat);
+    localStorage.setItem(STORAGE_KEYS.repo, repo);
+    showAdmin();
+  });
+  
+  // Nav click handlers
+  document.querySelectorAll('.admin-nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.admin-nav-item').forEach(i => i.classList.remove('active'));
+      document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+      item.classList.add('active');
+      document.getElementById(`panel-${item.dataset.panel}`).classList.add('active');
+    });
+  });
+});
+
+function showPatOrEditor() {
+  document.getElementById('passwordGate').classList.add('hidden');
+  
+  const pat = localStorage.getItem(STORAGE_KEYS.pat);
+  const repo = localStorage.getItem(STORAGE_KEYS.repo);
+  
+  if (pat && repo) {
+    showAdmin();
+  } else {
+    document.getElementById('patSetup').classList.remove('hidden');
+  }
+}
+
+function showAdmin() {
+  document.getElementById('passwordGate').classList.add('hidden');
+  document.getElementById('patSetup').classList.add('hidden');
+  document.getElementById('adminLayout').classList.add('active');
+  loadAllContent();
+}
+
+function clearCredentials() {
+  if (confirm('This will log you out. Continue?')) {
+    localStorage.removeItem(STORAGE_KEYS.pat);
+    localStorage.removeItem(STORAGE_KEYS.repo);
+    sessionStorage.removeItem(STORAGE_KEYS.authenticated);
+    location.reload();
+  }
+}
+
+// ============ CONTENT LOADING ============
+async function loadAllContent() {
+  showMsg('Loading content...', 'info');
+  
+  try {
+    await Promise.all([
+      loadPosts(),
+      ...NOVELS.map(n => loadNovelPanel(n)),
+      loadSiteContent(),
+      loadUniverseContent(),
+      loadTcgContent(),
+      loadMusicContent(),
+      loadGalleryContent()
+    ]);
+    hideMsg();
+  } catch (err) {
+    showMsg('Error loading content: ' + err.message, 'error');
+  }
+}
+
+// ============ BLOG POSTS ============
+async function loadPosts() {
+  const container = document.getElementById('postsList');
+  container.innerHTML = '<p>Loading posts...</p>';
+  
+  try {
+    const files = await getDirectory('_posts');
+    
+    if (!files || files.length === 0) {
+      container.innerHTML = '<div class="item-list-empty">No posts yet</div>';
+      return;
+    }
+    
+    const posts = files.filter(f => f.name.endsWith('.md')).sort((a, b) => b.name.localeCompare(a.name));
+    
+    let html = '<div class="item-list">';
+    for (const post of posts) {
+      const match = post.name.match(/^(\d{4}-\d{2}-\d{2})-(.+)\.md$/);
+      if (match) {
+        const [, date, slug] = match;
+        const title = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+        html += `
+          <div class="item-list-item">
+            <div class="item-list-info">
+              <h4>${title}</h4>
+              <p>${date}</p>
+            </div>
+            <div class="item-list-actions">
+              <button class="btn btn-sm" onclick="editPost('${post.path}')">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deletePost('${post.path}')">Delete</button>
+            </div>
+          </div>
+        `;
+      }
+    }
+    html += '</div>';
+    container.innerHTML = html;
+  } catch (err) {
+    container.innerHTML = '<div class="msg msg-error">Error loading posts</div>';
+  }
+}
+
+let editingPostPath = null;
+
+function openPostModal(path = null) {
+  editingPostPath = path;
+  document.getElementById('postModalTitle').textContent = path ? 'Edit Post' : 'New Post';
+  document.getElementById('postTitle').value = '';
+  document.getElementById('postTags').value = '';
+  document.getElementById('postContent').value = '';
+  
+  if (path) {
+    loadPostForEdit(path);
+  }
+  
+  document.getElementById('postModal').classList.add('active');
+}
+
+async function loadPostForEdit(path) {
+  const content = await getFile(path);
+  if (!content) return;
+  
+  const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (match) {
+    const [, frontMatter, body] = match;
+    const meta = parseYAML(frontMatter);
+    document.getElementById('postTitle').value = meta.title || '';
+    document.getElementById('postTags').value = (meta.tags || '').replace(/[\[\]]/g, '');
+    document.getElementById('postContent').value = body.trim();
+  }
+}
+
+async function savePost() {
+  const title = document.getElementById('postTitle').value.trim();
+  const tags = document.getElementById('postTags').value.trim();
+  const content = document.getElementById('postContent').value.trim();
+  
+  if (!title || !content) {
+    alert('Please fill in title and content');
+    return;
+  }
+  
+  const btn = document.getElementById('postSaveBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>';
+  
+  try {
+    const date = new Date().toISOString().split('T')[0];
+    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const filename = editingPostPath || `_posts/${date}-${slug}.md`;
+    
+    const tagsArray = tags ? tags.split(',').map(t => t.trim()).filter(Boolean) : [];
+    
+    const fileContent = `---
+layout: post
+title: "${title}"
+date: ${new Date().toISOString()}
+${tagsArray.length ? `tags: [${tagsArray.join(', ')}]` : ''}
+---
+
+${content}
+`;
+    
+    await githubAPI('PUT', filename, fileContent);
+    
+    closeModal('postModal');
+    showMsg('Post saved! Site will rebuild in ~1 min.', 'success');
+    loadPosts();
+  } catch (err) {
+    showMsg('Error saving post: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Publish';
+  }
+}
+
+async function editPost(path) {
+  openPostModal(path);
+}
+
+async function deletePost(path) {
+  if (!confirm('Delete this post?')) return;
+  
+  try {
+    await githubAPI('DELETE', path);
+    showMsg('Post deleted', 'success');
+    loadPosts();
+  } catch (err) {
+    showMsg('Error deleting post: ' + err.message, 'error');
+  }
+}
+
+// ============ NOVELS ============
+async function loadNovelPanel(novelKey) {
+  const container = document.getElementById(`novel-${novelKey}-content`);
+  container.innerHTML = '<p>Loading...</p>';
+  
+  try {
+    // Load novel data
+    const novelsYaml = await getFile('_data/novels.yml');
+    
+    // Load chapters
+    const chapters = await getDirectory(`_chapters/${novelKey}`);
+    const chapterList = (chapters || []).filter(f => f.name.endsWith('.md')).sort((a, b) => a.name.localeCompare(b.name));
+    
+    let html = `
+      <h3>Description</h3>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-md);">Edit the novel's description and metadata in the data file.</p>
+      <button class="btn" onclick="editNovelData('${novelKey}')">Edit Novel Info</button>
+      
+      <h3>Chapters</h3>
+      <button class="btn btn-primary" onclick="openChapterModal('${novelKey}')" style="margin-bottom: var(--space-md);">+ New Chapter</button>
+    `;
+    
+    if (chapterList.length > 0) {
+      html += '<div class="item-list">';
+      for (const ch of chapterList) {
+        const content = await getFile(ch.path);
+        const match = content?.match(/title:\s*"?([^"\n]+)"?/);
+        const title = match ? match[1] : ch.name;
+        const numMatch = ch.name.match(/^(\d+)/);
+        const num = numMatch ? numMatch[1] : '?';
+        
+        html += `
+          <div class="item-list-item">
+            <div class="item-list-info">
+              <h4>Chapter ${num}: ${title}</h4>
+              <p>${ch.name}</p>
+            </div>
+            <div class="item-list-actions">
+              <button class="btn btn-sm" onclick="editChapter('${novelKey}', '${ch.path}')">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteChapter('${ch.path}')">Delete</button>
+            </div>
+          </div>
+        `;
+      }
+      html += '</div>';
+    } else {
+      html += '<div class="item-list-empty">No chapters yet</div>';
+    }
+    
+    container.innerHTML = html;
+  } catch (err) {
+    container.innerHTML = `<div class="msg msg-error">Error: ${err.message}</div>`;
+  }
+}
+
+let currentChapterNovel = null;
+let editingChapterPath = null;
+
+function openChapterModal(novelKey, path = null) {
+  currentChapterNovel = novelKey;
+  editingChapterPath = path;
+  document.getElementById('chapterModalTitle').textContent = path ? 'Edit Chapter' : 'New Chapter';
+  document.getElementById('chapterNovel').value = novelKey;
+  document.getElementById('chapterEditPath').value = path || '';
+  document.getElementById('chapterNumber').value = '1';
+  document.getElementById('chapterTitle').value = '';
+  document.getElementById('chapterContent').value = '';
+  
+  if (path) {
+    loadChapterForEdit(path);
+  }
+  
+  document.getElementById('chapterModal').classList.add('active');
+}
+
+async function loadChapterForEdit(path) {
+  const content = await getFile(path);
+  if (!content) return;
+  
+  const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (match) {
+    const [, frontMatter, body] = match;
+    const numMatch = frontMatter.match(/chapter_number:\s*(\d+)/);
+    const titleMatch = frontMatter.match(/title:\s*"?([^"\n]+)"?/);
+    
+    document.getElementById('chapterNumber').value = numMatch ? numMatch[1] : '1';
+    document.getElementById('chapterTitle').value = titleMatch ? titleMatch[1] : '';
+    document.getElementById('chapterContent').value = body.trim();
+  }
+}
+
+async function saveChapter() {
+  const novel = document.getElementById('chapterNovel').value;
+  const number = parseInt(document.getElementById('chapterNumber').value) || 1;
+  const title = document.getElementById('chapterTitle').value.trim();
+  const content = document.getElementById('chapterContent').value.trim();
+  const editPath = document.getElementById('chapterEditPath').value;
+  
+  if (!title || !content) {
+    alert('Please fill in title and content');
+    return;
+  }
+  
+  const btn = document.getElementById('chapterSaveBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>';
+  
+  try {
+    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const numStr = number.toString().padStart(2, '0');
+    const filename = editPath || `_chapters/${novel}/${numStr}-${slug}.md`;
+    
+    const fileContent = `---
+layout: chapter
+novel: ${novel}
+chapter_number: ${number}
+title: "${title}"
+---
+
+${content}
+`;
+    
+    // If editing with new number/title, delete old file first
+    if (editPath && editPath !== filename) {
+      await githubAPI('DELETE', editPath);
+    }
+    
+    await githubAPI('PUT', filename, fileContent);
+    
+    closeModal('chapterModal');
+    showMsg('Chapter saved!', 'success');
+    loadNovelPanel(novel);
+  } catch (err) {
+    showMsg('Error saving chapter: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Save Chapter';
+  }
+}
+
+async function editChapter(novel, path) {
+  openChapterModal(novel, path);
+}
+
+async function deleteChapter(path) {
+  if (!confirm('Delete this chapter?')) return;
+  
+  try {
+    await githubAPI('DELETE', path);
+    showMsg('Chapter deleted', 'success');
+    const novel = path.split('/')[1];
+    loadNovelPanel(novel);
+  } catch (err) {
+    showMsg('Error: ' + err.message, 'error');
+  }
+}
+
+async function editNovelData(novelKey) {
+  // For now, open a simple editor for the novels.yml file
+  const content = await getFile('_data/novels.yml');
+  openYamlEditor('_data/novels.yml', 'Edit Novels Data', content);
+}
+
+// ============ PAGE CONTENT ============
+async function loadSiteContent() {
+  const container = document.getElementById('site-content');
+  try {
+    const content = await getFile('_data/site.yml');
+    container.innerHTML = `
+      <p style="color: var(--text-secondary);">Edit the home page hero text and blog section labels.</p>
+      <button class="btn" onclick="openYamlEditor('_data/site.yml', 'Edit Home Page')">Edit Content</button>
+    `;
+  } catch (err) {
+    container.innerHTML = `<div class="msg msg-error">Error loading</div>`;
+  }
+}
+
+async function loadUniverseContent() {
+  const container = document.getElementById('universe-content');
+  container.innerHTML = `
+    <p style="color: var(--text-secondary);">Edit the universe page content including sections and story connections.</p>
+    <button class="btn" onclick="openYamlEditor('_data/universe.yml', 'Edit Universe Page')">Edit Content</button>
+  `;
+}
+
+async function loadTcgContent() {
+  const container = document.getElementById('tcg-content');
+  container.innerHTML = `
+    <p style="color: var(--text-secondary);">Edit the TCG Sim page description, features, and game URL.</p>
+    <button class="btn" onclick="openYamlEditor('_data/tcg.yml', 'Edit TCG Sim Page')">Edit Content</button>
+  `;
+}
+
+async function loadMusicContent() {
+  const container = document.getElementById('music-content');
+  container.innerHTML = `
+    <p style="color: var(--text-secondary);">Edit the music page description and SoundCloud settings.</p>
+    <button class="btn" onclick="openYamlEditor('_data/music.yml', 'Edit Music Page')">Edit Content</button>
+  `;
+}
+
+async function loadGalleryContent() {
+  const container = document.getElementById('gallery-content');
+  container.innerHTML = `
+    <p style="color: var(--text-secondary);">Manage gallery images. Images should be uploaded to <code>/images/gallery/</code> folder.</p>
+    <button class="btn" onclick="openYamlEditor('_data/gallery.yml', 'Edit Gallery')">Edit Gallery Data</button>
+    <div class="msg msg-info" style="margin-top: var(--space-md);">
+      <strong>To add images:</strong><br>
+      1. Upload image files to your repo's <code>/images/gallery/</code> folder<br>
+      2. Add entries to the gallery data with filename, title, and description
+    </div>
+  `;
+}
+
+// ============ YAML EDITOR ============
+async function openYamlEditor(filePath, title) {
+  document.getElementById('editorModalTitle').textContent = title;
+  document.getElementById('editorFilePath').value = filePath;
+  document.getElementById('editorFileType').value = 'yaml';
+  
+  const content = await getFile(filePath);
+  
+  document.getElementById('editorFields').innerHTML = `
+    <div class="form-group">
+      <label>Content (YAML format)</label>
+      <textarea id="editorYamlContent" class="code large" style="min-height: 400px;">${content || ''}</textarea>
+    </div>
+  `;
+  
+  document.getElementById('editorModal').classList.add('active');
+}
+
+async function saveEditorContent() {
+  const filePath = document.getElementById('editorFilePath').value;
+  const content = document.getElementById('editorYamlContent').value;
+  
+  try {
+    await githubAPI('PUT', filePath, content);
+    closeModal('editorModal');
+    showMsg('Saved! Site will rebuild.', 'success');
+  } catch (err) {
+    showMsg('Error: ' + err.message, 'error');
+  }
+}
+
+// ============ UI HELPERS ============
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+}
+
+function showMsg(text, type = 'info') {
+  const container = document.getElementById('globalMsg');
+  container.innerHTML = `<div class="msg msg-${type}">${text}</div>`;
+}
+
+function hideMsg() {
+  document.getElementById('globalMsg').innerHTML = '';
+}
+</script>
 </body>
 </html>

@@ -1,0 +1,80 @@
+coronation:
+  title: "Coronation"
+  category: "Sci-Fi Novella"
+  status: "First Draft Complete"
+  word_count: "10,000+"
+  description: |
+    Coronation is a sci-fi racing novella that explores themes of corporate 
+    corruption, the commodification of human energy, and the price of ambition. 
+    Set in a future where competitive racing has become the primary means of 
+    generating power for megacorporations, the story follows a rising star 
+    who begins to question the system that made them.
+
+    The novella examines what happens when competition becomes exploitation, 
+    and whether individual excellence can exist outside the machinery that 
+    seeks to harvest it.
+  themes: "Corporate exploitation, the nature of competition, individual agency versus systemic power, energy as currency, and the moral cost of success."
+
+azure-sunrise:
+  title: "The Azure Sunrise"
+  category: "Fantasy Novella"
+  status: "In Progress"
+  word_count: ""
+  description: |
+    The Azure Sunrise follows Solen and Epheira on a journey that 
+    questions the very nature of change. In a world where the Azure God's 
+    influence spreads like dawn across the horizon, two individuals must 
+    confront what it means to transform—and what is lost when we do.
+
+    This novella explores the tension between preservation and transformation 
+    that lies at the heart of the interconnected universe. It asks whether 
+    change is salvation or destruction, and whether the answer depends on 
+    who's asking.
+  characters:
+    - name: "Solen"
+      description: "A seeker caught between worlds, whose journey toward the Azure God forces them to question everything they believed about identity."
+    - name: "Epheira"
+      description: "Bound to Solen by circumstances beyond their control, Epheira represents the tension between duty and desire, preservation and release."
+  themes: "Transformation, identity, the cost of change, divine influence on mortal lives."
+
+threads-of-the-soul:
+  title: "Threads of the Soul: The Orphan's War"
+  category: "Fantasy Novel"
+  subtitle: "Book One"
+  status: "First Draft Complete"
+  word_count: "45,000+"
+  description: |
+    Threads of the Soul: The Orphan's War is the first book in a planned 
+    trilogy that forms the cornerstone of the interconnected universe. In a world 
+    where magic flows through the soul and is shaped by philosophical Ideals, 
+    five protagonists find their fates intertwined by forces beyond their understanding.
+
+    The magic system is built on the tension between two fundamental Ideals: 
+    Transformation—the belief that change is the path to perfection—and 
+    Preservation—the conviction that what exists must be protected and maintained. 
+    Those who bind themselves to an Ideal gain power, but at the cost of being shaped by it.
+  themes: "The nature of belief, how ideology shapes identity, whether we control our beliefs or they control us."
+  series_info: "Book One of a planned trilogy. The subsequent books will continue to explore the war between Ideals and its consequences for both the world and the characters bound to it."
+
+tormented-gems:
+  title: "The Tormented Gems"
+  category: "Dark Fantasy Novel"
+  status: "In Progress"
+  word_count: ""
+  description: |
+    The Tormented Gems is a dark fantasy novel that draws inspiration 
+    from Shakespeare's Hamlet while forging its own path through themes of 
+    grief, vengeance, and the weight of the dead upon the living. In this world, 
+    certain gems can trap the echoes of departed souls—fragments of consciousness 
+    that persist beyond death, tormented by their unfinished business.
+
+    The story explores what happens when the dead refuse to stay silent, and 
+    when the living must decide whether to honor their demands or break free 
+    from the chains of inherited trauma.
+  about_gems: |
+    The titular gems serve as both plot device and metaphor. Each gem contains 
+    a tormented soul, trapped in the moment of their greatest anguish. Those 
+    who possess such gems can commune with the dead within—but such communion 
+    comes at a cost. The dead are not content to merely advise; they hunger 
+    for resolution, and they will use the living to achieve it.
+  themes: "Grief, vengeance, the relationship between living and dead, inherited trauma, whether we owe the dead our obedience."

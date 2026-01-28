@@ -1,0 +1,9 @@
+# Site-wide editable content
+hero:
+  title: "Stories from an"
+  title_highlight: "Interconnected Universe"
+  subtitle: "Exploring themes of transformation, preservation, and the threads that bind souls across worlds."
+
+blog:
+  section_label: "Updates"
+  section_title: "Latest Posts"
