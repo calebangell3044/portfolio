@@ -1,20 +1,14 @@
 title: Caleb Angell | Creative Works
 description: Stories from an interconnected universe
-url: ""
-baseurl: ""
+baseurl: "/portfolio"
 
 # Build settings
 markdown: kramdown
 permalink: /blog/:slug/
-
-# Collections for novels
-collections:
-  novels:
-    output: true
-    permalink: /novels/:name/
 
 # Exclude admin and other files from build
 exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - "*.zip"
